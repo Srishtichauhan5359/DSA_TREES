@@ -1,0 +1,55 @@
+//code 
+root = root->next[index];
+    }
+}
+void Find(node *root, string tofind)
+{
+   int size =  tofind.size();
+   for(int i = 0; i < size; i++)
+   {
+       int index = tofind[i] - 'a';
+       if(root->next[index] == NULL)
+       {
+          cout<<0<<endl;
+          return;
+       }
+       else
+       {
+          root =  root->next[index];    
+       }
+   }
+   if(root == NULL)
+   {
+        cout<<0<<endl;
+        return;
+   }
+    else
+        cout<<root->total<<endl;
+}
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */ 
+    int noofcommands = 0;
+    cin>>noofcommands;
+    
+    node *root = new node;
+    root->data = '#';
+       
+    for(int i = 0; i < noofcommands; i++)
+    {
+        string operation;
+        cin>>operation;
+        if(operation.compare("add") == 0)
+        {
+          string toadd;
+          cin>>toadd;
+          Add(root, toadd);
+        }
+        else
+        {
+          string tofind;
+          cin>>tofind;
+          Find(root, tofind);
+        }
+    }
+    return 0;
+}
